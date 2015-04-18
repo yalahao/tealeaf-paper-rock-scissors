@@ -46,7 +46,7 @@ end
 
 
 choices = ['p','r','s']
-choices_hash = { "p": "paper", "r": "rock", "s": "scissors"}
+choices_hash = { "p" => "paper", "r" => "rock", "s" => "scissors"}
 my_choice = get_choice(choices)
 computer_choice = choices.sample
 show_choices(my_choice, computer_choice, choices_hash)
