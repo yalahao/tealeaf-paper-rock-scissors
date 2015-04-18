@@ -35,10 +35,29 @@ end
 
 
 def show_result(choice1, choice2, choices_hash)
+  
   say "You chose #{choices_hash[choice1]}. Computer chose #{choices_hash[choice2]}"
+  win = "You won!"
+  lose = "You lose..."
+
   if choice1 == choice2
     say "It's a draw!"
+  elsif (choice1 == 'p' && choice2 == 'r')
+    say "Paper wraps rock. #{win}"
+  elsif (choice1 == 'r' && choice2 == 'p')
+    say "Paper wraps rock. #{lose}"
+  elsif (choice1 == 'p' && choice2 == 's')
+    say "Scissors cut paper. #{lose}"
+  elsif (choice1 == 's' && choice2 == 'p')
+    say "Scissors cut paper. #{win}"
+  elsif (choice1 == 'r' && choice2 == 's')
+    say "Rock breaks scissors. #{win}"
+  elsif (choice1 == 's' && choice2 == 'r')
+    say "Rock breaks scissors. #{lose}"
+  else 
+    say "Something went wrong. Restart the game and make sure you choose the valid options."
   end
+  
 end
 
 def play_again
