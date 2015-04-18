@@ -86,4 +86,5 @@ def play_game
   play_again
 end
 
+say "Welcome to the Paper, Rock, Scissors game!"
 play_game
