@@ -15,8 +15,6 @@ Compare choices
     puts results
     update score
 
-Keep score
-
 =end 
 
 require 'pry'
@@ -26,7 +24,6 @@ def say(s)
 end
 
 def get_choice(options_arr)
-  say "Choose one: (P/R/S)"
   choice = gets.chomp.downcase
   if options_arr.include?(choice)
     return choice
@@ -36,18 +33,34 @@ def get_choice(options_arr)
   end
 end
 
-def show_choices(choice1, choice2, choices_hash)
+
+def show_result(choice1, choice2, choices_hash)
   say "You chose #{choices_hash[choice1]}. Computer chose #{choices_hash[choice2]}"
+  if choice1 == choice2
+    say "It's a draw!"
+  end
 end
 
-def compare(choice1, choice2)
-#  if choice1 == choice2
+def play_again
+  say "Play again? (Y/N)"
+  choice = get_choice(['y','n'])
+  if choice == 'y'
+    play_game
+  else
+    say "See you next time!"
+  end
 end
 
+def play_game
+  choices = ['p','r','s']
+  choices_hash = { "p" => "paper", "r" => "rock", "s" => "scissors"}
 
-choices = ['p','r','s']
-choices_hash = { "p" => "paper", "r" => "rock", "s" => "scissors"}
-my_choice = get_choice(choices)
-computer_choice = choices.sample
-show_choices(my_choice, computer_choice, choices_hash)
+  say "Choose your play: (P/R/S)"
+  my_choice = get_choice(choices)
+  computer_choice = choices.sample
 
+  show_result(my_choice, computer_choice, choices_hash)
+  play_again
+end
+
+play_game
