@@ -1,8 +1,8 @@
 # Pseudo code
 =begin
 
-Ask for my choice 
-  If choice is valid 
+Ask for my choice
+  If choice is valid
     return choice
   else ask again
 
@@ -15,7 +15,7 @@ Compare choices
     puts results
     update score
 
-=end 
+=end
 
 require 'pry'
 
@@ -27,7 +27,7 @@ def get_choice(options_arr)
   choice = gets.chomp.downcase
   if options_arr.include?(choice)
     return choice
-  else 
+  else
     say "Invalid choice. Try again. "
     get_choice(options_arr)
   end
@@ -35,9 +35,9 @@ end
 
 
 def show_result(choice1, choice2, choices_hash)
-  
+
   say "You chose #{choices_hash[choice1]}. Computer chose #{choices_hash[choice2]}"
-  
+
   win = "You won!"
   lose = "You lose..."
   paper = "Paper wraps rock."
@@ -58,7 +58,7 @@ def show_result(choice1, choice2, choices_hash)
     say "#{rock} #{win}"
   elsif (choice1 == 's' && choice2 == 'r')
     say "#{rock} #{lose}"
-  else 
+  else
     say "Something went wrong. Restart the game and make sure you choose the valid options."
   end
 
@@ -75,14 +75,14 @@ def play_again
 end
 
 def play_game
-  choices = ['p','r','s']
-  choices_hash = { "p" => "paper", "r" => "rock", "s" => "scissors"}
+
+  choices = { "p" => "paper", "r" => "rock", "s" => "scissors"}
 
   say "Choose your play: (P/R/S)"
-  my_choice = get_choice(choices)
-  computer_choice = choices.sample
+  my_choice = get_choice(choices.keys)
+  computer_choice = choices.keys.sample
 
-  show_result(my_choice, computer_choice, choices_hash)
+  show_result(my_choice, computer_choice, choices)
   play_again
 end
 
